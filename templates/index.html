@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <title>Herramienta de extracción de texto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="main-section-bg">
+        <div class="container">
+            <div class="language-toggle">
+                <div id="google_translate_element"></div>
+            </div>
+
+
+            <main class="main-content">
+                <h1>Sube una Imagen o PDF para Extraer Texto</h1>
+                <h4>Formatos de archivo compatibles: jpg, jpeg, png, pdf, docx, xlsx, pptx</h4>
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" accept=".jpg, .jpeg, .png, .pdf, .docx, .xlsx, .pptx" required>
+                    <button type="submit" data-en="Extract Text" data-es="Extraer texto" class="extract">Extraer texto
+                        <span><box-icon name='search-alt-2'></box-icon></span></button>
+                    <button type="button" onclick="resetApp()" class="reset">Reiniciar<span><box-icon
+                                name='reset'></box-icon></span></button>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    {% if text %}
+    <div id="output">
+        <h2>Texto extraído</h2>
+
+        <!-- Buttons for copying and downloading extracted text -->
+        <div class="actions">
+            <button onclick="copyToClipboard()">Copiar a portapapeles</button>
+            {% if download_link %}
+            <a href="{{ download_link }}" download="extracted_text.txt">Descargar Texto Extraído</a>
+            {% endif %}
+        </div>
+
+        <pre id="extracted-text">{{ text }}</pre>
+    </div>
+    {% endif %}
+
+    <!-- Donations Section -->
+    <div class="donate-section">
+        <div class="container">
+            <h3 data-en="Support Our App">Dale algo de amor a XTRACT</h3>
+            <p data-en="If you find this app useful, consider supporting us:"
+                data-es="Si encuentras útil esta aplicación, considera apoyarnos:">Si encuentras útil esta herramienta,
+                considera apoyarnos.</p>
+
+            <!-- MercadoPago Donation Button -->
+            <p>Puedes donar usando MercadoPago</p>
+            <a href="https://link.mercadopago.com.mx/lingualink" target="_blank">
+                <button type="button" data-en="Donate in MXN" data-es="Donar en MXN">Donar</button>
+            </a>
+
+            <!-- QR Code for MercadoPago Donation (replace with your MercadoPago QR code image) -->
+            <div class="qr-codes">
+                <img src="{{ url_for('static', filename='qr-code.png') }}" alt="Scan to donate in MXN"
+                    data-en="Scan to donate in MXN" data-es="Escanea para donar en MXN">
+            </div>
+        </div>
+    </div>
+
+
+    <section class="about">
+        <div class="container">
+            <div class="left">
+                <h2>Que es XTRACT</h2>
+                <p>XTRACT es una herramienta de extracción de texto simple pero efectiva. Es capaz de extraer textos de
+                    imagenes, archivos PDF, Word, PowerPoint y Excel.</p>
+            </div>
+
+            <div class="right">
+                <strong>Fornatos compatibles:</strong>
+                <p>.jpg, .jpeg, .png, .pdf, .docx, .xlsx, .pptx</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <svg width="248" height="34" viewBox="0 0 248 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0.45 33L12.51 16.935L0.45 0.824998H9.225L18.9 14.01H23.04L32.715 0.824998H41.49L29.43 16.935L41.49 33H32.67L23.04 19.86H18.9L9.27 33H0.45Z"
+                    fill="#FA3131" />
+                <path
+                    d="M43.9488 17.115V0.824998H83.5488V17.115H76.2588V6.675H66.4488V33H59.2488V6.675H51.2388V17.115H43.9488ZM88.7115 33V0.824998H115.667C118.997 0.824998 121.577 1.665 123.407 3.345C125.267 5.025 126.197 7.575 126.197 10.995C126.197 13.905 125.522 16.185 124.172 17.835C122.822 19.485 120.902 20.52 118.412 20.94L125.837 33H117.647L110.762 21.165H95.9115V33H88.7115ZM114.812 6.675H95.9115V15.27L114.812 15.315C116.132 15.315 117.137 14.985 117.827 14.325C118.547 13.665 118.907 12.555 118.907 10.995C118.907 9.405 118.547 8.295 117.827 7.665C117.137 7.005 116.132 6.675 114.812 6.675ZM128.902 33L143.392 0.824998H154.507L168.997 33H161.167L158.107 26.205H139.792L136.732 33H128.902ZM142.402 20.355H155.497L149.242 6.45H148.657L142.402 20.355ZM188.284 33.225C182.344 33.225 177.799 31.86 174.649 29.13C171.499 26.37 169.924 22.29 169.924 16.89C169.924 11.52 171.499 7.455 174.649 4.695C177.799 1.935 182.344 0.569999 188.284 0.599999L204.484 0.689998V6.45H188.779C184.879 6.45 181.984 7.275 180.094 8.925C178.204 10.575 177.259 13.23 177.259 16.89C177.259 20.55 178.204 23.22 180.094 24.9C181.984 26.55 184.879 27.375 188.779 27.375H204.934V33.225H188.284ZM208.304 17.115V0.824998H247.904V17.115H240.614V6.675H230.804V33H223.604V6.675H215.594V17.115H208.304Z"
+                    fill="white" />
+            </svg>
+
+            <p>Text extraction tool</p>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript for Copy and Language Toggle -->
+    <script>
+        function copyToClipboard() {
+            const textElement = document.getElementById("extracted-text").innerText;
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textElement;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+            alert(document.documentElement.lang === 'es' ? 'Texto copiado al portapapeles!' : 'Text copied to clipboard!');
+        }
+
+        function resetApp() {
+            window.location.href = "/";
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'es' }, 'google_translate_element');
+        }
+
+        // function setLanguage(lang) {
+        //     document.documentElement.lang = lang;
+        //     document.querySelectorAll('[data-en]').forEach(el => {
+        //         el.innerText = el.getAttribute(`data-${lang}`);
+        //     });
+        // }
+    </script>
+</body>
+
+</html>

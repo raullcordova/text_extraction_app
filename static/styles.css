@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+h1, h4 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+.language-toggle {
+    padding: 1em;
+}
+
+.main-section-bg {
+    background: linear-gradient(#1F1F1F, #272727);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    min-height: 100dvh;
+}
+
+form {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .50em;
+    align-items: center;
+    justify-content: center;
+
+    input, button {
+        flex: 1;
+    }
+
+    input[type=file]::file-selector-button {
+        background-color: #ff4800;
+        color: #ffffff;
+        padding-block: 1em;
+        padding-inline: 2.5em;
+        border: none;
+        outline: none;
+        margin-block-end: .50em;
+        position: relative;
+        transition: all 300ms ease-in-out;
+    }
+
+    input[type=file]::file-selector-button:hover {
+        background-color: #a83000;
+        transition: all 300ms ease-in-out;
+    }
+
+    button {
+        background: #ddd;
+        padding-block: .50em;
+        border: none;
+        outline: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .50rem;
+
+    }
+}
+
+
+#output {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #dee4eb;
+    max-width: min(400px, 800px);
+    margin-inline: auto;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #00000060;
+
+    h2 {
+        margin-block-end: .60rem;
+        color: #414141;
+    }
+
+     button {
+        border: none;
+        outline: none;
+        padding: .50em;
+        background: #4d4fe9;
+        color: #ffffff;
+        margin-inline-end: .50em;
+        border-radius: 5px;
+     }
+
+     button:hover {
+        background-color: #323399;
+        transition: all 300ms ease-in-out;
+     }
+}
+pre {
+    margin-block-start: 1em;
+    text-align: left;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-y: auto; /* Enables vertical scrolling */
+    max-height: 300px; /* Sets the maximum height */
+    white-space: pre-wrap; /* Keeps text wrapping within the box */
+}
+
+.container {
+    max-width: Min(92%, 1300px);
+    margin-inline: auto;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.main-content {
+    text-align: center;
+    margin-block: 6em 12em;
+
+    h1 {
+        font-size: clamp(2rem, 5vw, 2.50rem);
+        font-weight: 600;
+        margin-block-end: .50rem;
+    }
+
+    h4 {
+        font-size: clamp(1rem, 5vw, 1.10rem);
+        font-weight: 300;
+    }
+}
+
+.about {
+    margin-block: 6em 0;
+    padding-block: 2em;
+    color: #ffffff;
+    background-color: #000000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    
+    .left {
+        h2 {
+            font-size: clamp(1.50rem, 5vw, 2rem);
+            margin-block-end: .5rem;
+            color: #ffffff;
+        }
+    
+        p {
+            color: #b9b9b9;
+        }
+    }
+
+    .right {
+
+        strong {
+            color: #ffffff;
+        }
+
+        p {
+            list-style-type: none;
+            color: #b9b9b9;
+        }
+    }
+}
+
+.about .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.donate-section {
+    text-align: center;
+    padding-block: 4em;
+    h3 {
+        font-size: clamp(1.50rem, 5vw, 2rem);
+        font-weight: 600;
+        margin-block-end: .50rem;
+    }
+
+    p {
+        font-weight: 300;
+    }
+
+    [type=button] {
+        padding-block: 1em;
+        padding-inline: 2.5em;
+        background-color: #ff4800;
+        color: #ffffff;
+        border: none;
+        outline: none;
+        margin-block: 1.60em 2em;
+        transition: all 300ms ease-in-out;
+    }
+
+    [type=button]:hover {
+        background-color: #a83000;
+        transition: all 300ms ease-in-out;
+    }
+}
+
+.qr-codes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 200px;
+        box-shadow: 4px 4px 20px #00000050;
+        margin-block-start: 1em;
+    }
+}
+
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-block: 4em;
+
+    p {
+        margin-block-start: .40em;
+    }
+}
+

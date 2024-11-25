@@ -1,0 +1,7 @@
+Flask
+pytesseract
+pillow
+pymupdf
+python-docx
+openpyxl
+python-pptx
