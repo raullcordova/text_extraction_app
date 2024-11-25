@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn app:text_extraction_app
